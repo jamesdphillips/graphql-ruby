@@ -35,6 +35,9 @@ module GraphQL
         elsif operation.operation_type == "mutation"
           root_type = query.schema.mutation
           execution_strategy_class = query.schema.mutation_execution_strategy
+        elsif operation.operation_type == "subscription"
+          root_type = query.schema.subscription
+          execution_strategy_class = query.schema.subscription_execution_strategy
         end
         execution_strategy = execution_strategy_class.new
         query.context.execution_strategy = execution_strategy

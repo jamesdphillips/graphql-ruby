@@ -22,6 +22,7 @@ class GraphQL::Schema
     @directives = DIRECTIVES.reduce({}) { |m, d| m[d.name] = d; m }
     @static_validator = GraphQL::StaticValidation::Validator.new(schema: self)
     @rescue_middleware = GraphQL::Schema::RescueMiddleware.new
+
     @middleware = [@rescue_middleware]
     # Default to the built-in execution strategy:
     self.query_execution_strategy = GraphQL::Query::SerialExecution
